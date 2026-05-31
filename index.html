@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Quiz Terminal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    <div class="app">
+        <div id="stats" class="hidden">Вопрос: <span id="current-q">1</span> | Очки: <span id="score">0</span></div>
+        <main>
+            <section id="setup-screen">
+                <div class="card">
+                    <h1>INITIALIZING...</h1>
+                    <p>Загрузите базу вопросов (.json)</p>
+                    <input type="file" id="file-input" accept=".json">
+                    <p id="load-error" class="error"></p>
+                </div>
+            </section>
+            <section id="quiz-screen" class="hidden">
+                <div class="card">
+                    <h2 id="question-text"></h2>
+                    <div id="options-grid"></div>
+                    <button id="next-btn" class="hidden">NEXT_STEP ></button>
+                </div>
+            </section>
+            <section id="result-screen" class="hidden">
+                <div class="card">
+                    <h2 id="final-stat"></h2>
+                    <div id="save-zone">
+                        <input type="text" id="player-name" placeholder="USER_NAME">
+                        <button id="save-score-btn">SAVE_TO_DATABASE</button>
+                    </div>
+                    <h3>TOP_USERS:</h3>
+                    <ul id="leaderboard"></ul>
+                    <button onclick="location.reload()">REBOOT_SYSTEM</button>
+                </div>
+            </section>
+        </main>
+        <button id="toggle-admin" class="minimal">ADMIN_PANEL</button>
+        <section id="admin-panel" class="hidden">
+            <form id="add-q-form" class="card">
+                <input type="text" id="new-q-text" placeholder="Question" required>
+                <input type="text" class="opt-in" placeholder="Option 1" required>
+                <input type="text" class="opt-in" placeholder="Option 2" required>
+                <input type="text" class="opt-in" placeholder="Option 3" required>
+                <input type="text" class="opt-in" placeholder="Option 4" required>
+                <select id="correct-select">
+                    <option value="0">Correct: 1</option>
+                    <option value="1">Correct: 2</option>
+                    <option value="2">Correct: 3</option>
+                    <option value="3">Correct: 4</option>
+                </select>
+                <button type="submit">GENERATE_JSON</button>
+            </form>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
